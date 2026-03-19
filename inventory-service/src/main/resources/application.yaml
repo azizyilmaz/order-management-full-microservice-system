@@ -1,8 +1,8 @@
 spring:
   application:
-    name: order-service
+    name: inventory-service
   datasource:
-    url: jdbc:h2:mem:orderDB
+    url: jdbc:h2:mem:inventoryDB
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -19,4 +19,4 @@ spring:
         web-allow-others: true
 
 server:
-  port: 8081
+  port: 8082
