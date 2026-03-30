@@ -3,4 +3,18 @@ spring:
     name: product-service
   data:
     mongodb:
-      uri: mongodb://localhost:27017/product-service
+      uri: mongodb://localhost:27017/productDB
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        register: true
+        health-check-interval: 15s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

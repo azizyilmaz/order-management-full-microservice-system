@@ -17,6 +17,21 @@ spring:
       path: /h2-console
       settings:
         web-allow-others: true
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        register: true
+        health-check-interval: 15s
+        instance-id: ${spring.application.name}:${server.port}
 
 server:
   port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

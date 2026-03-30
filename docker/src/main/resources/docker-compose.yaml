@@ -1,0 +1,19 @@
+services:
+  consul:
+    container_name: order-management-full-consul
+    image: hashicorp/consul:1.16
+    command: agent -dev -client=0.0.0.0
+    ports:
+      - "8500:8500"
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+  product-service:
+    build: .
+    container_name: product-service
+    depends_on:
+      - mongodb
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/productDB
